@@ -22,11 +22,7 @@ Contoh:
 ```
 
 ```
-* Buka direktori tempat file png berada.
-* Mencari dan menyimpan nama file pada direktori tersebut yang memiliki ekstensi .png 
-* Nama file baru ditambahkan dengan _grey.png setelah nama file lama dihapus .png nya
-* Menambahkan destination path pada nama file baru, juga menambahkan source path pada nama file lama
-* Rename source menjadi dest agar file png berpindah ke direktori tujuan dengan penambahan _grey pada nama file nya.
+* 
 
 
 ## Soal 2
@@ -58,12 +54,7 @@ h. Menggunakan thread, socket, shared memory
 ```
 
 ```
-* Membuat direktori hatiku dan membuat file elen.ku dengan menggunakan touch. 
-* Mencari tahu owner dan group dari file elen.ku.
-* Membuat struct dan menyimpan user id owner dan group di dalam struct tersebut.
-* Membandingkan user id owner dan user id group www-data. Jika sama, maka file elen.ku akan dihapus. 
-* Untuk mengubah permission menjadi 777 (dalam oktal) maka kita perlu mengubah string "0777" ke dalam oktal menggunakan strtol. 
-* Selanjutnya, chmod.
+* 
 
 
 ## Soal 3
@@ -96,11 +87,7 @@ b. Kedua karakter memiliki status yang unik
 ```
 
 ```
-* Buat file daftar.txt menggunakan touch.
-* Unzip file campur2.zip
-* Melihat file apa saja yang berada dalam folder campur2 menggunakan ls.
-* Mendapatkan file-file yang berekstensi .txt menggunakan grep.
-* Print hasil grep ke dalam file daftar.txt
+* 
 
 
 ## Soal 4
@@ -120,10 +107,7 @@ Dengan Syarat :
 ```
 
 ```
-* Mengambil waktu akses dari file. 
-* Mengambil waktu dari sistem kita. 
-* Setelah mendapatkan keduanya, bandingkan selisih waktu keduanya. Jika selisihnya <= 30, maka buat sebuah file baru dengan nama makan_sehat$.txt . 
-* $ merupakan iterasi sampai tak hingga. 
+* 
 
 
 ## Soal 5
