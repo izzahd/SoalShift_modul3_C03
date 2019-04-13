@@ -982,4 +982,5 @@ int main(){
 }
 ```
 
-
+![gambar5a](images/soal5-1.png)
+![gambar5b](images/soal5-2.png)
