@@ -981,6 +981,8 @@ int main(){
     	return 0;
 }
 ```
+* Menggunakan shared memory untuk menyimpan stok makanan yang ada di shop
+* Membuat fungsi `getch()` untuk mendeteksi input tanpa harus menggunakan tombol enter
 
 ![gambar5a](images/soal5-1.png)
 ![gambar5b](images/soal5-2.png)
