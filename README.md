@@ -78,6 +78,8 @@ int main(int argc, char* argv[])
 * Kemudian untuk tiap isi dari array numbers, dibuat thread yang memanggil fungsi `print_factorial`
 * Fungsi `print_factorial` digunakan untuk menghitung faktorial serta mencetak hasil dari perhitungan faktorial tersebut
 
+![gambar1](images/soal1.png)
+
 
 ## Soal 2
 
