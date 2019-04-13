@@ -387,7 +387,13 @@ int main(int argc, char const *argv[]) {
     	return 0;
 }
 ```
-* 
+* Terdapat 2 server dan 2 client, yaitu server-jual, server-beli, client-jual, dan client-beli
+* Menggunakan shared memory yang menyimpan jumlah stok. Shared memory tersebut diakses oleh server-jual dan server-beli
+* Thread digunakan pada server-jual untuk mencetak jumlah stok saat ini setiap 5 detiknya
+* Client-jual berguna menambah stok dengan mengirimkan string `tambah`, jumlah stok pun akan bertambah 1
+* Client-beli berguna mengurangi stok dengan mengirim string `beli`, jumlah stok akan berkurang 1. Juga menampilkan status transaksi yang dikirim oleh server-beli
+* Server-jual berguna menghitung penambahan jumlah stok sesuai instruksi dari client-jual. Jika client-jual mengirimkan string `tambah` maka stok akan ditambahkan
+* Server-beli berguna menghitung pengurangan jumlah stok serta menentukan status transaksi pembelian yang dilakukan. Jika stok sebelumnya tersedia (tidak 0) maka server-beli akan mengirimkan string `Transaksi berhasil` yang akan dibaca oleh client-jual dan menampilkannya pada terminal. Jika stok 0, maka server-beli akan mengirimkan string `Transaski gagal`
 ![gambar2](images/soal2.png)
 
 ## Soal 3
