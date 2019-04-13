@@ -1,96 +1,52 @@
-#include<stdio.h>
-#include<math.h>
-#include<pthread.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
 
-long int fact[50], number[50], t;
-int x, y, i, j, a;
+int numbers[100];
+int k;
 
-void *Fact(void *temp)
+void* print_factorial(void* arg)
 {
+    	int answer = numbers[k];
+    	int iter;
 
-    a = 1;
-    number[0] = 0;
-    while(scanf("%d", &x) != EOF)
-    {
-	if (x==0) break;
+    	for(iter = 1; iter < numbers[k]; iter++)
+    	{
+ 	   	answer = answer * iter;
+    	}
 
-	number[a] = x;
-	a++;
-    }
-
-    long int f;
-    long int b ;
-
-    fact[0] = 0;
-
-    int c = a - 1;
-    for(c; c>0; c--)
-    {
-	b = number[c];
-    	for(f = 1; number[c] > f; f++)
-	{
-	   b = f * b;
-	}
-    	fact[c] = b;
-    }
-    return fact;
+    	printf("%d! = %d\n", numbers[k], answer);
 }
 
-void*Sortfact(void *temp)
+int main(int argc, char* argv[])
 {
-        for (i = 1; i < sizeof(fact); i++) 
-        {
-            for (j = i + 1; j < sizeof(fact); j++)
-            {
-                if (fact[i] > fact[j]) 
-                {
-                    t =  fact[i];
-                    fact[i] = fact[j];
-                    fact[j] = t;
-                }
-            }
-        }
+    	int i, j, temp;
+    	pthread_t thread[argc - 1];
 
-	return fact;
-}
+    	for (i = 0; i < argc - 1; i++)
+    	{
+ 	   	numbers[i] = atoi(argv[i + 1]);
+    	}
 
-void *Sortnumb(void *temp)
-{
-        for (i = 1; i < sizeof(number); i++) 
-        {
+    	for (i = 0; i < argc - 1; i++)
+    	{
+ 	   	for (j = i + 1; j < argc - 1; j++)
+ 	   	{
+ 		   	if (numbers[i] > numbers[j])
+ 		   	{
+ 			   	temp = numbers[i];
+ 			  	numbers[i] = numbers[j];
+ 			   	numbers[j] = temp;
+ 		   	}
+ 	   	}
+    	}
 
-            for (j = i + 1; j < sizeof(number); j++)
-            {
-                if (number[i] > number[j]) 
-                {
-                    t =  number[i];
-                    number[i] = number[j];
-                    number[j] = t;
+    	for (k = 0; k < argc - 1; k++)
+    	{
+ 	   	pthread_create(&(thread[k]), NULL, print_factorial, &numbers[k]);
+ 	   	pthread_join(thread[k], NULL);
+    	}
 
-                }
-            }
-        }
-
-	return number;
-}
-
-int main(void)
-{
-    pthread_t thread1,thread2,thread3;
-    //printf("\nThreads creating.....\n");
-    pthread_create(&thread1, NULL, Fact, NULL);
-    pthread_create(&thread2, NULL, Sortfact, NULL);
-    pthread_create(&thread3, NULL, Sortnumb, NULL);
-   // printf("Threads created\n");
-
-    pthread_join(thread1, NULL);
-    pthread_join(thread2, NULL);
-    pthread_join(thread3, NULL);
-
-    for (y = 1; y < a; y++)
-    {
-    	printf("%ld! = %ld\n", number[y], fact[y]);
-    }
-    exit(1);
+    	exit(0);
+    	return EXIT_SUCCESS;
 }
