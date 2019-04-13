@@ -394,6 +394,7 @@ int main(int argc, char const *argv[]) {
 * Client-beli berguna mengurangi stok dengan mengirim string `beli`, jumlah stok akan berkurang 1. Juga menampilkan status transaksi yang dikirim oleh server-beli
 * Server-jual berguna menghitung penambahan jumlah stok sesuai instruksi dari client-jual. Jika client-jual mengirimkan string `tambah` maka stok akan ditambahkan
 * Server-beli berguna menghitung pengurangan jumlah stok serta menentukan status transaksi pembelian yang dilakukan. Jika stok sebelumnya tersedia (tidak 0) maka server-beli mengurangi stok yang ada dan mengirimkan string `transaksi berhasil` yang akan dibaca oleh client-jual dan menampilkannya pada terminal. Jika stok 0, maka server-beli akan mengirimkan string `transaksi gagal`
+
 ![gambar2](images/soal2.png)
 
 ## Soal 3
@@ -541,6 +542,7 @@ int main(void)
 }
 ```
 Pertama, untuk Agmal, Iraj dan View Status, kita membuat 3 thread sebagai 3 fungsi utama. Agmal untuk mengecek Agmal ayo bangun, Iraj untuk mengecek Iraj ayo tidur, dan view status untuk mengecek ke 2 status tersebut. Kita akan menjalankan thread sesuai dengan inputan. Apabila, kita menjalan Agmal/Iraj sebanyak 3 kali, maka fungsi selain yang dijalankan (Agmal/Iraj) akan didisable selama 10 detik. Untuk mengetahui sudah dijalankan 3 kali atau tidak, kami menggunakan counter. counteragmal untuk mengecek berapa kali fungsi Agmal dijalankan, counteriraj untuk mengecek berapa kali fungsi Iraj dijalankan. Apabila, counter mencapai 3, maka akan membuat boolean tidur1 & tidur2. tidur1 utk agmal, tidur2 utk iraj. Boolean diubah menjadi true lalu thread yang sedang didisable tersebut tidak akan bs berjalan namun thread yg lain bs berjalan. 
+
 ![gambar3](images/soal3.png)
 
 
@@ -615,6 +617,7 @@ int main(void)
 }
 ```
 Di soal 4, kami menggunakan mutex agar tidak ada task yang berjalan secara bersamaan sehingga dalam 1 waktu hanya dilakukan 1 task. Pertama kita perlu mencatata list proses yang berjalan sampai dengan 10 proses menggunakan system pipe dan head/tail lalu dimasukkan ke folder dan nama file yang diinginkan. Setelah itu, kita mengkompres masing-masing file txt lalu setelah berhasil dikompress, file yang dikompress otomatis di delete.Kita menggunakan  zip -m agar setelah file diekstrak, file tsb. didelete. Setelah itu, program diminta unntuk "Menunggu 15 Detik untuk mengekstrak kembali" dan kita sleep selama 15 detik. Setelah itu, lanjut ke thread selanjutnya untuk mengekstrak file zip tadi yang telah dibuat di folder masing-masing letak zip tsb. Kita mengunakan unzip dan -d untuk mengekstrak sesuai sumber direktori file, lalu destinasi yang diinginkan.
+
 ![gambar4a](images/soal4-1.png)
 ![gambar4b](images/soal4-2.png)
 
