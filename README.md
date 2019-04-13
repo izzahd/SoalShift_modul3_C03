@@ -558,9 +558,62 @@ Dengan Syarat :
 
 ### Jawaban :
 ```
+#include<stdio.h>
+#include<string.h>
+#include<pthread.h>
+#include<stdlib.h>
+#include<unistd.h>
 
+pthread_t tid1, tid2, tid3;
+int status1=0;
+int status2=0;
+int status3=0;
+
+void* tulis(void *arg)
+{
+
+    	system("ps -aux | head -10 > ~/Documents/FolderProses1/SimpanProses1.txt");
+    	system("ps -aux | tail -10 > ~/Documents/FolderProses2/SimpanProses2.txt");
+
+    	status1= 1;
+}
+
+void* paketin(void *arg)
+{
+    	while(status1 != 1)
+    	{
+    	}
+
+    	system("zip -m -j ~/Documents/FolderProses1/KompresProses1.zip ~/Documents/FolderProses1/SimpanProses1.txt");
+    	system("zip -m -j ~/Documents/FolderProses2/KompresProses2.zip ~/Documents/FolderProses2/SimpanProses2.txt");
+    	printf("Menunggu 15 Detik Untuk Meng-ekstrak Kembali\n");
+    	sleep(15);
+    	status2=1;
+}
+
+void* ekstrak(void *arg)
+{
+    	while(status2 != 1)
+    	{
+    	}
+    	system("unzip ~/Documents/FolderProses1/KompresProses1.zip -d ~/Documents/FolderProses1/");
+    	system("unzip ~/Documents/FolderProses2/KompresProses2.zip -d ~/Documents/FolderProses2/");
+}
+
+int main(void)
+{
+
+    	pthread_create(&(tid1), NULL, tulis, NULL);
+    	pthread_create(&(tid2), NULL, paketin, NULL);
+    	pthread_create(&(tid3), NULL, ekstrak, NULL);
+
+    	pthread_join(tid1, NULL);
+    	pthread_join(tid2, NULL);
+    	pthread_join(tid3, NULL);
+    	return 0;
+}
 ```
-* 
+Di soal 4, kami menggunakan mutex agar tidak ada task yang berjalan secara bersamaan sehingga dalam 1 waktu hanya dilakukan 1 task. Pertama kita perlu mencatata list proses yang berjalan sampai dengan 10 proses menggunakan system pipe dan head/tail lalu dimasukkan ke folder dan nama file yang diinginkan. Setelah itu, kita mengkompres masing-masing file txt lalu setelah berhasil dikompress, file yang dikompress otomatis di delete.Kita menggunakan  zip -m agar setelah file diekstrak, file tsb. didelete. Setelah itu, program diminta unntuk "Menunggu 15 Detik untuk mengekstrak kembali" dan kita sleep selama 15 detik. Setelah itu, lanjut ke thread selanjutnya untuk mengekstrak file zip tadi yang telah dibuat di folder masing-masing letak zip tsb. Kita mengunakan unzip dan -d untuk mengekstrak sesuai sumber direktori file, lalu destinasi yang diinginkan.
 
 
 ## Soal 5
